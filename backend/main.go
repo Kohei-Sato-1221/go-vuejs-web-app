@@ -2,17 +2,11 @@ package main
 
 import (
 	"fmt"
-	"github.com/labstack/echo"
-	"net/http"
+	"github.com/Kohei-Sato-1221/go-vuejs-web-app/backend/infrastructure"
 )
+
 
 func main() {
 	fmt.Println("Started!")
-
-	e := echo.New()
-	e.GET("/", func(c echo.Context) error {
-		return c.String(http.StatusOK, "Hello, World!!")
-	})
-
-	e.Logger.Fatal(e.Start(":8080"))
+	infrastructure.Router.Start(":8080")
 }
