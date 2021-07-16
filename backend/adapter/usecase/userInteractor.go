@@ -1,13 +1,11 @@
 package usecase
 
+import "github.com/Kohei-Sato-1221/go-vuejs-web-app/backend/adapter/usecase/interfaces"
+
 type UserInteractor struct {
-
-}
-
-func NewUserInteractor() *UserInteractor {
-	return &UserInteractor{}
+	UserRepository interfaces.UserRepository
 }
 
 func (i *UserInteractor) GetAllUsers() (string, error) {
-	return "[{id:1234, name:sugar}, {id:8321, name:salt}]", nil
+	return i.UserRepository.GetAllUsers()
 }

@@ -1,6 +1,9 @@
 package controllers
 
-import "github.com/Kohei-Sato-1221/go-vuejs-web-app/backend/adapter/usecase"
+import (
+	"github.com/Kohei-Sato-1221/go-vuejs-web-app/backend/adapter/gateway"
+	"github.com/Kohei-Sato-1221/go-vuejs-web-app/backend/adapter/usecase"
+)
 
 type UserController struct {
 	Interactor usecase.UserInteractor
@@ -8,7 +11,9 @@ type UserController struct {
 
 func NewUserController() *UserController {
 	return &UserController{
-		Interactor: *usecase.NewUserInteractor(),
+		Interactor: usecase.UserInteractor{
+			UserRepository: &gateway.UserRepository{},
+		},
 	}
 }
 
