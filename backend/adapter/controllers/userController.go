@@ -2,7 +2,7 @@ package controllers
 
 import (
 	"github.com/Kohei-Sato-1221/go-vuejs-web-app/backend/adapter/gateway"
-	"github.com/Kohei-Sato-1221/go-vuejs-web-app/backend/adapter/usecase"
+	"github.com/Kohei-Sato-1221/go-vuejs-web-app/backend/usecase"
 )
 
 type UserController struct {
