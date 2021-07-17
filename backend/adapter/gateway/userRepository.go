@@ -1,9 +1,31 @@
 package gateway
 
-type UserRepository struct {
+import (
+	"github.com/Kohei-Sato-1221/go-vuejs-web-app/backend/domain"
+)
 
+type UserRepository struct {
 }
 
-func (r *UserRepository) GetAllUsers() (string, error) {
-	return "[{id:1234, name:sugar}, {id:8321, name:salt}]", nil
+func (r *UserRepository) GetAllUsers() ([]domain.User, error) {
+	var users []domain.User
+
+	user1 := domain.User{
+		ID:     1234,
+		Name:   "sugar",
+		Email:  "hogehoge@sugar.co.jp",
+		Gender: "Male",
+	}
+
+	user2 := domain.User{
+		ID:     1235,
+		Name:   "salt",
+		Email:  "hogehoge@salt.co.jp",
+		Gender: "Female",
+	}
+
+	users = append(users, user1)
+	users = append(users, user2)
+
+	return users, nil
 }

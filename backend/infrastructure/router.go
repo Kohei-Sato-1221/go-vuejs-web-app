@@ -17,8 +17,7 @@ func init() {
 		return c.String(http.StatusOK, "Hello, World!!")
 	})
 	router.GET("/users", func(c echo.Context) error {
-		data, _ := userController.GetAllUsers()
-		return c.String(http.StatusOK, data)
+		return userController.GetAllUsers(c)
 	})
 	Router = router
 }

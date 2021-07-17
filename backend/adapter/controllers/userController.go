@@ -2,6 +2,7 @@ package controllers
 
 import (
 	"github.com/Kohei-Sato-1221/go-vuejs-web-app/backend/adapter/gateway"
+	"github.com/Kohei-Sato-1221/go-vuejs-web-app/backend/adapter/interfaces"
 	"github.com/Kohei-Sato-1221/go-vuejs-web-app/backend/usecase"
 )
 
@@ -17,6 +18,11 @@ func NewUserController() *UserController {
 	}
 }
 
-func (c *UserController) GetAllUsers() (string, error) {
-	return c.Interactor.GetAllUsers()
+func (controller *UserController) GetAllUsers(c interfaces.Context) error {
+	users, err := controller.Interactor.GetAllUsers()
+	if err == nil {
+		return c.JSON(200, users)
+	} else {
+		return c.JSON(400, "Error")
+	}
 }
