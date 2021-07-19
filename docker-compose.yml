@@ -1,0 +1,32 @@
+version: '3.8'
+services:
+  db:
+    platform: linux/x86_64 # for M1 Macbook
+    build: ./docker/build
+    container_name: sugar-webapp-db
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_DATABASE: sugar-webapp
+      MYSQL_USER: sugar
+      MYSQL_PASSWORD: sugar29fa038
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+      MYSQL_ROOT_PASSWORD: root1357?!
+      TZ: Asia/Tokyo
+    volumes:
+      - ./docker/build/init:/docker-entrypoint-initdb.d
+      - ./docker/build/data:/var/lib/mysql
+    command: mysqld
+    tty: true
+    networks:
+      sugar-webapp-network:
+        ipv4_address: 172.22.0.2
+
+networks:
+  sugar-webapp-network:
+    name: sugar-webapp-network
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.22.0.0/16
