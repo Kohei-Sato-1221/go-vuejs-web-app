@@ -4,16 +4,19 @@ import (
 	"github.com/Kohei-Sato-1221/go-vuejs-web-app/backend/adapter/gateway"
 	"github.com/Kohei-Sato-1221/go-vuejs-web-app/backend/adapter/interfaces"
 	"github.com/Kohei-Sato-1221/go-vuejs-web-app/backend/usecase"
+	"gorm.io/gorm"
 )
 
 type UserController struct {
 	Interactor usecase.UserInteractor
 }
 
-func NewUserController() *UserController {
+func NewUserController(db *gorm.DB) *UserController {
 	return &UserController{
 		Interactor: usecase.UserInteractor{
-			UserRepository: &gateway.UserRepository{},
+			UserRepository: &gateway.UserRepository{
+				DB: db,
+			},
 		},
 	}
 }

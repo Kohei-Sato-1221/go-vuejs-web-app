@@ -1,0 +1,2 @@
+INSERT INTO `users` (`name`, `email`, `gender`, `created_at`, `updated_at`) VALUES ('Sugar', 'sugar@hogehoge.com', 'Male', cast(now() as datetime), cast(now() as datetime));
+INSERT INTO `users` (`name`, `email`, `gender`, `created_at`, `updated_at`) VALUES ('Salt', 'salt@hogehoge.com', 'Female', cast(now() as datetime), cast(now() as datetime));
