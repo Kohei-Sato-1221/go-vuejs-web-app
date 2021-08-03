@@ -12,3 +12,7 @@ type UserInteractor struct {
 func (i *UserInteractor) GetAllUsers() ([]domain.User, error) {
 	return i.UserRepository.GetAllUsers()
 }
+
+func (i *UserInteractor) CreateUser(user domain.User) (uint, error) {
+	return i.UserRepository.CreateUser(user)
+}

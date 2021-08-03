@@ -22,5 +22,8 @@ func init() {
 	router.GET("/users", func(c echo.Context) error {
 		return userController.GetAllUsers(c)
 	})
+	router.GET("/createUser", func(c echo.Context) error {
+		return userController.CreateUser(c)
+	})
 	Router = router
 }

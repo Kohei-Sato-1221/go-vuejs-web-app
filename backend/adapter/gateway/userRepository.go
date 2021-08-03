@@ -44,3 +44,20 @@ func (r *UserRepository) GetAllUsers() ([]domain.User, error) {
 
 	return domainUsers, nil
 }
+
+func (r *UserRepository) CreateUser(user domain.User) (uint, error) {
+	repoUser := &User{
+		Name:   user.Name,
+		Email:  user.Email,
+		Gender: user.Gender,
+	}
+
+	result := r.DB.Create(&repoUser)
+	if result.Error != nil {
+		fmt.Println("ERROR!")
+		fmt.Println(result.Error)
+		return 0, result.Error
+	}
+
+	return repoUser.ID, nil
+}
